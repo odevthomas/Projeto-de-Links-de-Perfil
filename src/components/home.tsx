@@ -10,11 +10,12 @@ function Home() {
       <ProfileSection />
       <div className="py-8">
         <h2 className="text-3xl font-bold text-center mb-2 text-white">
-          My Services & Links
+          Meus serviços e links
         </h2>
         <p className="text-gray-300 text-center mb-8 max-w-2xl mx-auto px-4">
-          Explore my services, projects, and connect with me on various
-          platforms.
+        Explore meus serviços, projetos e conecte-se comigo em várias plataformas.
+
+
         </p>
         <BentoGrid />
       </div>

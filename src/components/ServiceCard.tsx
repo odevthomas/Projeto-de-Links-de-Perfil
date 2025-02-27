@@ -17,10 +17,10 @@ interface ServiceCardProps {
 }
 
 const ServiceCard = ({
-  title = "Service Title",
-  description = "This is a brief description of the service offered. Click to learn more about what we can do for you.",
+  title = "Desenvolvimento de Software",
+  description = "Soluções completas de software personalizadas para atender suas necessidades específicas.",
   icon: Icon,
-  imageUrl = "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?q=80&w=300&auto=format&fit=crop",
+  imageUrl = "/logo.png",
   bgColor = "bg-gray-900",
   gridSpan = "small",
   onClick,
@@ -50,8 +50,8 @@ const ServiceCard = ({
         onClick={handleClick}
       >
         {featured && (
-          <Badge className="absolute top-3 right-3 z-10 bg-white hover:bg-white text-black">
-            Featured
+          <Badge className="absolute top-3 right-3 z-10 bg-[#f52545] hover:bg-white text-black">
+            Destaque
           </Badge>
         )}
 
@@ -68,7 +68,7 @@ const ServiceCard = ({
           {imageUrl && (
             <div
               className="relative w-full mb-4 overflow-hidden rounded-lg"
-              style={{ height: gridSpan === "large" ? "220px" : "140px" }}
+              style={{ height: gridSpan === "large" ? "390px" : "240px" }}
             >
               <img
                 src={imageUrl}
@@ -83,7 +83,7 @@ const ServiceCard = ({
 
           {url && (
             <div className="mt-4 flex items-center text-white font-medium hover:underline group">
-              Learn more
+              Saiba mais
               <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
             </div>
           )}

@@ -18,10 +18,10 @@ interface LinkCardProps {
 }
 
 const LinkCard = ({
-  title = "Visit My Website",
-  url = "https://example.com",
+  title = "Visite Meu Site",
+  url = "https://www.devthm.site",
   icon = <ExternalLink className="h-5 w-5" />,
-  description = "Click to visit this important link",
+  description = "Clique para visitar este link importante",
   color = "bg-gray-900",
 }: LinkCardProps) => {
   return (
@@ -30,19 +30,21 @@ const LinkCard = ({
         <TooltipTrigger asChild>
           <motion.div
             whileHover={{
-              scale: 1.03,
-              boxShadow: "0 0 15px rgba(255, 255, 255, 0.2)",
+              scale: 1.05,
+              boxShadow: "0 0 20px rgba(255, 255, 255, 0.3)",
             }}
-            whileTap={{ scale: 0.97 }}
+            whileTap={{ scale: 0.95 }}
             className="h-full"
           >
             <Card
-              className={`${color} w-full h-full min-h-[150px] p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] cursor-pointer rounded-xl border border-gray-800 hover:border-white hover:border-opacity-30`}
+              className={`${color} w-full h-full min-h-[150px] p-5 flex flex-col justify-between cursor-pointer rounded-xl border border-gray-800 hover:border-white hover:border-opacity-30`}
               onClick={() => window.open(url, "_blank", "noopener,noreferrer")}
+              role="button"
+              aria-label={`Open ${title}`}
             >
               <div className="flex items-center justify-between">
                 <h3 className="font-semibold text-lg text-white">{title}</h3>
-                <div className="text-gray-300 bg-gray-800/50 p-2 rounded-full">
+                <div className="text-[#f52545] bg-gray-800/50 p-2 rounded-full">
                   {icon}
                 </div>
               </div>
@@ -61,7 +63,7 @@ const LinkCard = ({
           </motion.div>
         </TooltipTrigger>
         <TooltipContent side="top" className="bg-gray-900 text-white">
-          <p>Open {title}</p>
+          <p>Abrir {title}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

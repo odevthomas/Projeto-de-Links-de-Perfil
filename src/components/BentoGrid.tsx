@@ -8,18 +8,18 @@ import {
   Globe,
   Mail,
   Music,
-  Video,
+  Store as StoreIcon,
   Instagram,
   Linkedin,
   Twitter,
   Github,
-  Youtube,
+  Phone as Whatsapp, // Importando ícone de telefone para WhatsApp
   ExternalLink,
 } from "lucide-react";
 
 interface BentoGridItem {
   id: string;
-  type: "service" | "link";
+  type: "service" | "link" | "iframe"; 
   title: string;
   description?: string;
   icon?: React.ElementType;
@@ -41,94 +41,101 @@ const defaultItems: BentoGridItem[] = [
   {
     id: "1",
     type: "service",
-    title: "Web Development",
+    title: "Desenvolvimento Web",
     description:
-      "Custom websites built with modern technologies and best practices for optimal performance and user experience.",
+      "Sites personalizados construídos com tecnologias modernas e melhores práticas para desempenho e experiência do usuário otimizados.",
     icon: Globe,
-    imageUrl:
-      "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=400&auto=format&fit=crop&sat=-100",
-    url: "#web-development",
-    bgColor: "bg-gray-900",
+    imageUrl: "/cta2.png",
+    url: "#desenvolvimento-web",
+    bgColor: "bg-black",
     gridSpan: "large",
     featured: true,
-    category: "Services",
+    category: "Serviços",
   },
   {
     id: "2",
     type: "service",
-    title: "Content Creation",
+    title: "Criação de Identidade Visual",
     description:
-      "High-quality content for your brand and social media presence that engages your audience and drives growth.",
+      "Conteúdo de alta qualidade para sua marca e presença nas redes sociais que engaja seu público e impulsiona o crescimento.",
     icon: FileText,
-    imageUrl:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=400&auto=format&fit=crop&sat=-100",
-    url: "#content-creation",
-    bgColor: "bg-gray-800",
+    imageUrl: "/gilbarbosa.png",
+    url: "#criacao-de-conteudo",
+    bgColor: "bg-black",
     gridSpan: "medium",
-    category: "Services",
+    category: "Serviços",
   },
   {
     id: "3",
     type: "link",
     title: "GitHub",
-    description: "Check out my open source projects and contributions.",
+    description: "Confira meus projetos e contribuições de código aberto.",
     icon: Github,
-    url: "https://github.com",
-    bgColor: "bg-gray-900",
+    url: "https://github.com/odevthomas",
+    bgColor: "bg-black",
     category: "Social",
+  },
+  {
+    id: "13", 
+    type: "link",
+    title: "Contratação Freelancer",
+    description: "Entre em contato para serviços de desenvolvimento web personalizados.",
+    icon: Globe,
+    url: "mailto:developer.thomas@outlook.com",
+    bgColor: "bg-black",
+    category: "Contato",
   },
   {
     id: "4",
     type: "service",
-    title: "Video Production",
-    description:
-      "Professional video editing and production services for your brand, from concept to final delivery.",
-    icon: Video,
+    title: "AfiliShop",
+    description: "Em criação..",
+    icon: StoreIcon,
     imageUrl:
       "https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=400&auto=format&fit=crop&sat=-100",
-    url: "#video-production",
-    bgColor: "bg-gray-800",
+    url: "#afili-shop",
+    bgColor: "bg-black",
     gridSpan: "medium",
-    category: "Services",
+    category: "Serviços",
   },
   {
     id: "5",
     type: "link",
-    title: "Contact Me",
-    description: "Get in touch for collaborations and inquiries.",
+    title: "Contato",
+    description: "Entre em contato para colaborações e consultas.",
     icon: Mail,
-    url: "mailto:contact@example.com",
-    bgColor: "bg-gray-900",
-    category: "Contact",
+    url: "developer.thomas@outlook.com",
+    bgColor: "bg-black",
+    category: "Contato",
   },
   {
     id: "6",
-    type: "link",
+    type: "iframe",
     title: "Spotify",
-    description: "Listen to my playlists and favorite music.",
+    description: "Ouça minhas playlists e músicas favoritas.",
     icon: Music,
-    url: "https://spotify.com",
-    bgColor: "bg-gray-800",
+    url: "https://open.spotify.com/embed/track/5pKCDm2fw4k6D6C5Rk646C?utm_source=generator&theme=0",
+    bgColor: "bg-black",
     category: "Social",
   },
   {
     id: "7",
     type: "link",
     title: "Instagram",
-    description: "Follow my creative journey and daily updates.",
+    description: "Siga minha jornada criativa e atualizações diárias.",
     icon: Instagram,
-    url: "https://instagram.com",
-    bgColor: "bg-gray-900",
+    url: "https://instagram.com/odevthomas",
+    bgColor: "bg-black",
     category: "Social",
   },
   {
     id: "8",
     type: "link",
     title: "LinkedIn",
-    description: "Connect professionally and see my work experience.",
+    description: "Conecte-se profissionalmente e veja minha experiência de trabalho.",
     icon: Linkedin,
-    url: "https://linkedin.com",
-    bgColor: "bg-gray-800",
+    url: "https://linkedin.com/in/odevthomas",
+    bgColor: "bg-black",
     category: "Social",
   },
   {
@@ -136,50 +143,37 @@ const defaultItems: BentoGridItem[] = [
     type: "link",
     title: "Twitter",
     description:
-      "Join the conversation and stay updated with my latest thoughts.",
+      "Participe da conversa e fique atualizado com meus últimos pensamentos.",
     icon: Twitter,
-    url: "https://twitter.com",
-    bgColor: "bg-gray-900",
+    url: "https://twitter.com/odevthomas",
+    bgColor: "bg-black",
     category: "Social",
   },
   {
-    id: "10",
+    id: "10", 
     type: "link",
-    title: "YouTube",
-    description: "Watch my tutorials, vlogs, and creative content.",
-    icon: Youtube,
-    url: "https://youtube.com",
-    bgColor: "bg-gray-800",
-    category: "Social",
+    title: "WhatsApp",
+    description: "Entre em contato comigo pelo WhatsApp para consultas rápidas.",
+    icon: Whatsapp, 
+    url: "https://api.whatsapp.com/send?phone=551999042072&text=Oi%20Thomas!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20um%20projeto.%20Vamos%20conversar%3F", 
+    bgColor: "bg-black",
+    category: "Contato",
   },
-  {
-    id: "11",
-    type: "service",
-    title: "UI/UX Design",
-    description:
-      "User-centered design solutions that create intuitive and engaging digital experiences.",
-    icon: ExternalLink,
-    imageUrl:
-      "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=400&auto=format&fit=crop&sat=-100",
-    url: "#design",
-    bgColor: "bg-gray-900",
-    gridSpan: "medium",
-    category: "Services",
-  },
+ 
 ];
 
 const BentoGrid = ({
   items = defaultItems,
   className = "",
-  categories = ["All", "Services", "Social", "Contact"],
+  categories = ["Todos", "Serviços", "Social", "Contato"],
 }: BentoGridProps) => {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("Todos");
   const [filteredItems, setFilteredItems] = useState(items);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Filter items based on active category
-    if (activeCategory === "All") {
+    // Filtrar itens com base na categoria ativa
+    if (activeCategory === "Todos") {
       setFilteredItems(items);
     } else {
       setFilteredItems(
@@ -189,14 +183,14 @@ const BentoGrid = ({
   }, [activeCategory, items]);
 
   useEffect(() => {
-    // Simulate loading for smoother animations
+    // Simular carregamento para animações mais suaves
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
     return () => clearTimeout(timer);
   }, []);
 
-  // Container animation for the grid
+  // Animação do contêiner para a grade
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -208,7 +202,7 @@ const BentoGrid = ({
     },
   };
 
-  // Item animation
+  // Animação do item
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -240,17 +234,17 @@ const BentoGrid = ({
     <div
       className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-black ${className}`}
     >
-      {/* Category Filter */}
+      {/* Filtro de Categoria */}
       <div className="flex justify-center mb-8 overflow-x-auto py-2 sticky top-0 z-10 bg-black/80 backdrop-blur-sm">
-        <div className="flex space-x-2 p-1 bg-gray-800/50 rounded-full">
+        <div className="flex space-x-2 p-1 bg-black/50 rounded-full">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeCategory === category
-                  ? "bg-white shadow-sm text-black"
-                  : "text-gray-300 hover:text-white"
+                  ? "bg-[#f52545] shadow-sm text-black"
+                  : "text-gray-200 hover:text-white"
               }`}
             >
               {category}
@@ -288,6 +282,21 @@ const BentoGrid = ({
                     url={item.url}
                     featured={item.featured}
                   />
+                ) : item.type === "iframe" ? ( // Renderizar iframe se o tipo for iframe
+                  <div className="bg-black p-4 rounded-lg">
+                    <h3 className="text-white">{item.title}</h3>
+                    <p className="text-gray-300">{item.description}</p>
+                    <iframe
+                      style={{ borderRadius: "12px" }}
+                      src={item.url}
+                      width="100%"
+                      height="352"
+                      frameBorder="0"
+                      allowFullScreen
+                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                      loading="lazy"
+                    ></iframe>
+                  </div>
                 ) : (
                   <LinkCard
                     title={item.title}
