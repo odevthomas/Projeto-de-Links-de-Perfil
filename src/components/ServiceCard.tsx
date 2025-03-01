@@ -1,68 +1,52 @@
 import React from "react";
-import { Card } from "./ui/card";
 import { motion } from "framer-motion";
-import { Badge } from "./ui/badge";
 import { ArrowUpRight } from "lucide-react";
-
-interface ServiceCardProps {
-  title?: string;
-  description?: string;
-  icon?: React.ElementType;
-  imageUrl?: string;
-  bgColor?: string;
-  gridSpan?: "small" | "medium" | "large";
-  onClick?: () => void;
-  url?: string;
-  featured?: boolean;
-}
 
 const ServiceCard = ({
   title = "Desenvolvimento de Software",
   description = "Soluções completas de software personalizadas para atender suas necessidades específicas.",
   icon: Icon,
   imageUrl = "/logo.png",
-  bgColor = "bg-gray-900",
+  bgColor = "bg-gradient-to-br from-[#f52545] to-orange-500",
   gridSpan = "small",
   onClick,
   url,
-  featured = false,
-}: ServiceCardProps) => {
+  featured = false, // Corrigido para 'featured'
+}) => {
   const handleClick = () => {
-    if (onClick) {
-      onClick();
-    } else if (url) {
-      window.open(url, "_blank");
-    }
+    if (onClick) onClick();
+    else if (url) window.open(url, "_blank");
   };
 
   return (
     <motion.div
-      whileHover={{
-        scale: 1.02,
-        boxShadow: "0 0 20px rgba(255, 255, 255, 0.15)",
-      }}
+      whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
       className="h-full"
     >
-      <Card
-        className={`${bgColor} h-full p-6 cursor-pointer overflow-hidden rounded-xl shadow-md hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 border border-gray-800 hover:border-white hover:border-opacity-30 relative`}
+      <div
+        className={`
+          ${bgColor} h-full p-6 cursor-pointer overflow-hidden rounded-xl
+          shadow-lg hover:shadow-xl transition-all duration-300 relative
+        `}
         onClick={handleClick}
       >
-        {featured && (
-          <Badge className="absolute top-3 right-3 z-10 bg-[#f52545] hover:bg-white text-black">
+        {featured && ( // Corrigido para 'featured'
+          <div className="absolute top-3 right-3 z-10 px-3 py-1 rounded-full 
+                         bg-[#f52545] text-white text-sm font-medium">
             Destaque
-          </Badge>
+          </div>
         )}
 
         <div className="flex flex-col h-full">
-          <div className="flex items-center mb-4">
+          <div className="flex items-center gap-3 mb-4">
             {Icon && (
-              <div className="p-2 rounded-lg bg-white/10 mr-3">
-                <Icon className="w-5 h-5 text-white" />
+              <div className="p-2 rounded-lg bg-[#f52545]/20">
+                <Icon className="w-5 h-5 text-[#f52545]" />
               </div>
             )}
-            <h3 className="text-xl font-semibold text-white">{title}</h3>
+            <h3 className="text-xl font-bold text-[#fff]">{title}</h3> {/* Corrigido o fechamento da tag */}
           </div>
 
           {imageUrl && (
@@ -73,22 +57,28 @@ const ServiceCard = ({
               <img
                 src={imageUrl}
                 alt={title}
-                className="object-cover w-full h-full transition-transform duration-500 hover:scale-110 grayscale"
+                className="object-cover w-full h-full transition-transform duration-500 
+                         hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#fff]/60 
+                            to-transparent opacity-0 hover:opacity-100 
+                            transition-opacity duration-300" />
             </div>
           )}
 
-          <p className="text-gray-300 flex-grow">{description}</p>
+          <p className="text-[#fff]/90 flex-grow mb-4">{description}</p>
 
           {url && (
-            <div className="mt-4 flex items-center text-white font-medium hover:underline group">
-              Saiba mais
-              <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
+            <div className="flex items-center text-[#fff] font-medium 
+                          group hover:text-[#fff] transition-colors">
+              <span>Saiba mais</span>
+              <ArrowUpRight className="ml-1 h-4 w-4 transition-transform 
+                                    group-hover:translate-x-0.5 
+                                    group-hover:-translate-y-0.5" />
             </div>
           )}
         </div>
-      </Card>
+      </div>
     </motion.div>
   );
 };

@@ -243,7 +243,7 @@ const BentoGrid = ({
               onClick={() => setActiveCategory(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 activeCategory === category
-                  ? "bg-[#f52545] shadow-sm text-black"
+                  ? "bg-[#f52545] shadow-sm text-gray-100"
                   : "text-gray-200 hover:text-white"
               }`}
             >
@@ -285,7 +285,7 @@ const BentoGrid = ({
                 ) : item.type === "iframe" ? ( // Renderizar iframe se o tipo for iframe
                   <div className="bg-black p-4 rounded-lg">
                     <h3 className="text-white">{item.title}</h3>
-                    <p className="text-gray-300">{item.description}</p>
+                    <p className="text-gray-100">{item.description}</p>
                     <iframe
                       style={{ borderRadius: "12px" }}
                       src={item.url}

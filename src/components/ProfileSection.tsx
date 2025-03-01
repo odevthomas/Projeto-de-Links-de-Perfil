@@ -15,7 +15,7 @@ const ProfileSection = ({
   name = "Thomas Eduardo",
   title = "Desenvolvedor Web Full Stack",
   bio = "Criador de interfaces eficientes e intuitivas. Especialista em desenvolvimento web, focado em performance, usabilidade e inovação. Compartilho minha experiência para ajudar outros desenvolvedores a crescerem no setor..",
-  avatarUrl = "/perfil/image.png",
+  avatarUrl = "/perfil/logo.png",
   backgroundColor = "bg-black",
 }: ProfileSectionProps) => {
   return (
@@ -31,7 +31,7 @@ const ProfileSection = ({
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300, damping: 10 }}
           >
-            <Avatar className="w-48 h-48 md:w-36 md:h-36 border-4 border-[#f52545]  shadow-[0_0_20px_rgba(255,255,255,0.2)] rounded-full overflow-hidden">
+            <Avatar className="w-100 h-100 md:w-56 md:h-56  overflow-hidden">
               <AvatarImage
                 src={avatarUrl}
                 alt={name}
@@ -55,7 +55,7 @@ const ProfileSection = ({
               <h1 className="text-2xl md:text-3xl font-bold text-white mb-1">
                 {name}
               </h1>
-              <h2 className="text-lg text-primary text-[#f52545] font-medium mb-3">{title}</h2>
+              <h2 className="text-lg     text-[#f52545] font-medium mb-3">{title}</h2>
               <p className="text-gray-300 mb-4 max-w-lg leading-relaxed">
                 {bio}
               </p>
