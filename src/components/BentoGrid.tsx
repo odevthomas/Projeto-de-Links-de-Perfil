@@ -45,7 +45,7 @@ const defaultItems: BentoGridItem[] = [
       "Aqui, apresento meu portfólio, que destaca a qualidade do meu trabalho em identidade visual e fortalece a presença da sua marca nas redes sociais, promovendo engajamento e crescimento.",
     icon: Globe,
     imageUrl: "/perfil/site.png",
-    url: "https://www.thomasnascimento.online",
+    url: "https://thomasnascimento.online/",
     bgColor: "bg-black",
     gridSpan: "medium",
     category: "Serviços",
