@@ -34,24 +34,10 @@ interface BentoGridItem {
 interface BentoGridProps {
   items?: BentoGridItem[];
   className?: string;
-  categories?: string[];
 }
 
 const defaultItems: BentoGridItem[] = [
-  {
-    id: "1",
-    type: "service",
-    title: "Desenvolvimento Web",
-    description:
-      "Sites personalizados construídos com tecnologias modernas e melhores práticas para desempenho e experiência do usuário otimizados.",
-    icon: Globe,
-    imageUrl: "/cta2.png",
-    url: "#desenvolvimento-web",
-    bgColor: "bg-black",
-    gridSpan: "large",
-    featured: true,
-    category: "Serviços",
-  },
+  // Serviços
   {
     id: "2",
     type: "service",
@@ -59,31 +45,11 @@ const defaultItems: BentoGridItem[] = [
     description:
       "Conteúdo de alta qualidade para sua marca e presença nas redes sociais que engaja seu público e impulsiona o crescimento.",
     icon: FileText,
-    imageUrl: "/gilbarbosa.png",
+    imageUrl: "/perfil/site.png",
     url: "#criacao-de-conteudo",
     bgColor: "bg-black",
     gridSpan: "medium",
     category: "Serviços",
-  },
-  {
-    id: "3",
-    type: "link",
-    title: "GitHub",
-    description: "Confira meus projetos e contribuições de código aberto.",
-    icon: Github,
-    url: "https://github.com/odevthomas",
-    bgColor: "bg-black",
-    category: "Social",
-  },
-  {
-    id: "13", 
-    type: "link",
-    title: "Contratação Freelancer",
-    description: "Entre em contato para serviços de desenvolvimento web personalizados.",
-    icon: Globe,
-    url: "mailto:developer.thomas@outlook.com",
-    bgColor: "bg-black",
-    category: "Contato",
   },
   {
     id: "4",
@@ -98,23 +64,15 @@ const defaultItems: BentoGridItem[] = [
     gridSpan: "medium",
     category: "Serviços",
   },
+
+  // Links Sociais
   {
-    id: "5",
+    id: "3",
     type: "link",
-    title: "Contato",
-    description: "Entre em contato para colaborações e consultas.",
-    icon: Mail,
-    url: "developer.thomas@outlook.com",
-    bgColor: "bg-black",
-    category: "Contato",
-  },
-  {
-    id: "6",
-    type: "iframe",
-    title: "Spotify",
-    description: "Ouça minhas playlists e músicas favoritas.",
-    icon: Music,
-    url: "https://open.spotify.com/embed/track/5pKCDm2fw4k6D6C5Rk646C?utm_source=generator&theme=0",
+    title: "GitHub",
+    description: "Confira meus projetos e contribuições de código aberto.",
+    icon: Github,
+    url: "https://github.com/odevthomas",
     bgColor: "bg-black",
     category: "Social",
   },
@@ -149,6 +107,8 @@ const defaultItems: BentoGridItem[] = [
     bgColor: "bg-black",
     category: "Social",
   },
+
+  // Links de Contato
   {
     id: "10", 
     type: "link",
@@ -159,38 +119,53 @@ const defaultItems: BentoGridItem[] = [
     bgColor: "bg-black",
     category: "Contato",
   },
- 
+  {
+    id: "13", 
+    type: "link",
+    title: "Contratação Freelancer",
+    description: "Entre em contato para serviços de desenvolvimento web personalizados.",
+    icon: Globe,
+    url: "mailto:developer.thomas@outlook.com",
+    bgColor: "bg-black",
+    category: "Contato",
+  },
+  {
+    id: "5",
+    type: "link",
+    title: "Contato",
+    description: "Entre em contato para colaborações e consultas.",
+    icon: Mail,
+    url: "developer.thomas@outlook.com",
+    bgColor: "bg-black",
+    category: "Contato",
+  },
+
+  // Links de Mídia Social e Outros
+  {
+    id: "6",
+    type: "iframe",
+    title: "Spotify",
+    description: "Ouça minhas playlists e músicas favoritas.",
+    icon: Music,
+    url: "https://open.spotify.com/embed/track/5pKCDm2fw4k6D6C5Rk646C?utm_source=generator&theme=0",
+    bgColor: "bg-black",
+    category: "Social",
+  },
 ];
 
 const BentoGrid = ({
   items = defaultItems,
   className = "",
-  categories = ["Todos", "Serviços", "Social", "Contato"],
 }: BentoGridProps) => {
-  const [activeCategory, setActiveCategory] = useState("Todos");
-  const [filteredItems, setFilteredItems] = useState(items);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Filtrar itens com base na categoria ativa
-    if (activeCategory === "Todos") {
-      setFilteredItems(items);
-    } else {
-      setFilteredItems(
-        items.filter((item) => item.category === activeCategory),
-      );
-    }
-  }, [activeCategory, items]);
-
-  useEffect(() => {
-    // Simular carregamento para animações mais suaves
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
     return () => clearTimeout(timer);
   }, []);
 
-  // Animação do contêiner para a grade
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -202,7 +177,6 @@ const BentoGrid = ({
     },
   };
 
-  // Animação do item
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -223,7 +197,7 @@ const BentoGrid = ({
     },
     hover: {
       scale: 1.05,
-      boxShadow: "0 0 15px rgba(255, 255, 255, 0.3)",
+      boxShadow: "0 0 15px rgba(255, 255, 255, 0.1)",
       transition: {
         duration: 0.3,
       },
@@ -232,38 +206,19 @@ const BentoGrid = ({
 
   return (
     <div
-      className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-black ${className}`}
+      className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  border-white/10 z-10 bg-black ${className}`}
     >
-      {/* Filtro de Categoria */}
-      <div className="flex justify-center mb-8 overflow-x-auto py-2 sticky top-0 z-10 bg-black/80 backdrop-blur-sm">
-        <div className="flex space-x-2 p-1 bg-black/50 rounded-full">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                activeCategory === category
-                  ? "bg-[#f52545] shadow-sm text-gray-100"
-                  : "text-gray-200 hover:text-white"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
-
       <AnimatePresence mode="wait">
         {isLoaded && (
           <motion.div
-            key={activeCategory}
+            key="bento-grid"
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
           >
-            {filteredItems.map((item) => (
+            {items.map((item) => (
               <motion.div
                 key={item.id}
                 variants={itemVariants}
@@ -282,7 +237,7 @@ const BentoGrid = ({
                     url={item.url}
                     featured={item.featured}
                   />
-                ) : item.type === "iframe" ? ( // Renderizar iframe se o tipo for iframe
+                ) : item.type === "iframe" ? (
                   <div className="bg-black p-4 rounded-lg">
                     <h3 className="text-white">{item.title}</h3>
                     <p className="text-gray-100">{item.description}</p>
@@ -301,10 +256,7 @@ const BentoGrid = ({
                   <LinkCard
                     title={item.title}
                     description={item.description}
-                    icon={
-                      item.icon &&
-                      React.createElement(item.icon, { className: "h-5 w-5" })
-                    }
+                    icon={item.icon && React.createElement(item.icon, { className: "h-5 w-5" })}
                     url={item.url || "#"}
                     color={item.bgColor}
                   />
