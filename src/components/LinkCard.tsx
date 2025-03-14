@@ -19,7 +19,7 @@ interface LinkCardProps {
 
 const LinkCard = ({
   title = "Visite Meu Site",
-  url = "https://www.devthm.site",
+  url = "https://www.thomasnascimento.online",
   icon = <ExternalLink className="h-5 w-5" />,
   description = "Clique para visitar este link importante",
   color = "bg-gray-900",
@@ -48,7 +48,7 @@ const LinkCard = ({
 
               <div className="flex items-center justify-between relative z-10 mb-3">
                 <h3 className="font-bold text-xl text-white">{title}</h3>
-                <div className="text-white bg-white/10 p-2.5 rounded-full backdrop-blur-sm">
+                <div className="text-white bg-red-700 p-2.5 rounded-full backdrop-blur-sm">
                   {icon}
                 </div>
               </div>

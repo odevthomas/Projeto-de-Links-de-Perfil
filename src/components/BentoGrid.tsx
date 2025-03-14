@@ -4,7 +4,6 @@ import LinkCard from "./LinkCard";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Code,
-  FileText,
   Globe,
   Mail,
   Music,
@@ -41,21 +40,21 @@ const defaultItems: BentoGridItem[] = [
   {
     id: "2",
     type: "service",
-    title: "Criação de Identidade Visual",
+    title: "Meu Portfólio",
     description:
-      "Conteúdo de alta qualidade para sua marca e presença nas redes sociais que engaja seu público e impulsiona o crescimento.",
-    icon: FileText,
+      "Aqui, apresento meu portfólio, que destaca a qualidade do meu trabalho em identidade visual e fortalece a presença da sua marca nas redes sociais, promovendo engajamento e crescimento.",
+    icon: Globe,
     imageUrl: "/perfil/site.png",
-    url: "#criacao-de-conteudo",
+    url: "https://www.thomasnascimento.online",
     bgColor: "bg-black",
     gridSpan: "medium",
     category: "Serviços",
-  },
-  {
+},
+{
     id: "4",
     type: "service",
     title: "AfiliShop",
-    description: "Em criação..",
+    description: "Projeto em andamento para criação de uma plataforma de afiliados.",
     icon: StoreIcon,
     imageUrl:
       "https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=400&auto=format&fit=crop&sat=-100",
@@ -63,51 +62,49 @@ const defaultItems: BentoGridItem[] = [
     bgColor: "bg-black",
     gridSpan: "medium",
     category: "Serviços",
-  },
+},
 
-  // Links Sociais
-  {
+// Links Sociais
+{
     id: "3",
     type: "link",
     title: "GitHub",
-    description: "Confira meus projetos e contribuições de código aberto.",
+    description: "Explore meus projetos e contribuições em código aberto.",
     icon: Github,
     url: "https://github.com/odevthomas",
     bgColor: "bg-black",
     category: "Social",
-  },
-  {
+},
+{
     id: "7",
     type: "link",
     title: "Instagram",
-    description: "Siga minha jornada criativa e atualizações diárias.",
+    description: "Acompanhe minha jornada criativa e minhas atualizações diárias.",
     icon: Instagram,
     url: "https://instagram.com/odevthomas",
     bgColor: "bg-black",
     category: "Social",
-  },
-  {
+},
+{
     id: "8",
     type: "link",
     title: "LinkedIn",
-    description: "Conecte-se profissionalmente e veja minha experiência de trabalho.",
+    description: "Conecte-se comigo para ver minha trajetória e experiências profissionais.",
     icon: Linkedin,
     url: "https://linkedin.com/in/odevthomas",
     bgColor: "bg-black",
     category: "Social",
-  },
-  {
+},
+{
     id: "9",
     type: "link",
     title: "Twitter",
-    description:
-      "Participe da conversa e fique atualizado com meus últimos pensamentos.",
+    description: "Junte-se à conversa e fique por dentro dos meus últimos pensamentos.",
     icon: Twitter,
     url: "https://twitter.com/odevthomas",
     bgColor: "bg-black",
     category: "Social",
-  },
-
+},
   // Links de Contato
   {
     id: "10", 
@@ -205,10 +202,14 @@ const BentoGrid = ({
   };
 
   return (
+    
     <div
       className={`w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  border-white/10 z-10 bg-black ${className}`}
+      
     >
+      
       <AnimatePresence mode="wait">
+        
         {isLoaded && (
           <motion.div
             key="bento-grid"
@@ -218,6 +219,7 @@ const BentoGrid = ({
             animate="visible"
             exit="hidden"
           >
+                
             {items.map((item) => (
               <motion.div
                 key={item.id}
@@ -226,6 +228,7 @@ const BentoGrid = ({
                 className={`${item.gridSpan === "large" ? "sm:col-span-2 sm:row-span-2" : item.gridSpan === "medium" ? "sm:col-span-2" : ""}`}
                 layout
               >
+                
                 {item.type === "service" ? (
                   <ServiceCard
                     title={item.title}
@@ -266,6 +269,7 @@ const BentoGrid = ({
           </motion.div>
         )}
       </AnimatePresence>
+      
     </div>
   );
 };

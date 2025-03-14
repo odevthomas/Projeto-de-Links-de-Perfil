@@ -8,7 +8,6 @@ interface ServiceCardProps {
   icon?: React.ElementType;
   imageUrl?: string;
   bgColor?: string;
-  gridSpan?: "small" | "medium" | "large";
   onClick?: () => void;
   url?: string;
   featured?: boolean;
@@ -18,9 +17,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   title = "Desenvolvimento de Software",
   description = "Soluções completas de software personalizadas para atender suas necessidades específicas.",
   icon: Icon,
-  imageUrl = "/logo.png",
+  imageUrl = "/perfil/logo.svg",
   bgColor = "bg-gradient-to-br from-[#f52545] to-orange-500",
-  gridSpan = "small",
   onClick,
   url,
   featured = false,
@@ -32,93 +30,65 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
   return (
     <motion.div
-      whileHover={{ 
+      whileHover={{
         scale: 1.02,
         y: -5,
       }}
       whileTap={{ scale: 0.98 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="h-full relative group"
+      className="relative rounded-2xl shadow-xl overflow-hidden cursor-pointer bg-black"
+      onClick={handleClick}
     >
-      <div
-        className={`
-          ${bgColor} h-full rounded-2xl shadow-xl overflow-hidden
-          transition-all duration-300 relative
-        `}
-      >
-        {/* Overlay gradient that gets stronger on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300 z-10"/>
-        
-        {/* Main content container */}
-        <div 
-          className="h-full flex flex-col relative z-20 p-6 cursor-pointer"
-          onClick={handleClick}
-        >
-          {featured && (
-            <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full 
-                          bg-white/90 text-[#f52545] text-sm font-bold backdrop-blur-sm
-                          shadow-lg transform -rotate-2 border border-[#f52545]/20">
-              Destaque
-            </div>
-          )}
-
-          {/* Image container */}
-          {imageUrl && (
-            <div
-              className="absolute inset-0 w-full h-full z-0"
-            >
-              <img
-                src={imageUrl}
-                alt={title}
-                className="object-cover w-full h-full transition-transform duration-700 
-                        scale-110 group-hover:scale-125"
-              />
-            </div>
-          )}
-
-          <div className="flex flex-col h-full justify-between">
-            {/* Header with icon and title */}
-            <div className="flex items-center gap-3 mb-4">
-              {Icon && (
-                <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm shadow-lg">
-                  <Icon className="w-5 h-5 text-white" />
-                </div>
-              )}
-              <h3 className="text-2xl font-bold text-white tracking-tight shadow-text">
-                {title}
-              </h3>
-            </div>
-
-            {/* Description area that adjusts size based on gridSpan */}
-            <div className="mt-auto">
-              <p className="text-white/90 text-base mb-5 max-w-[90%] line-clamp-3 shadow-text">
-                {description}
-              </p>
-
-              {url && (
-                <motion.div 
-                  className="flex items-center text-white font-medium gap-2 
-                            bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full w-fit
-                            group-hover:bg-white/20 transition-colors border border-white/10"
-                  whileHover={{ x: 5 }}
-                >
-                  <span>Saiba mais</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform 
-                                      group-hover:translate-x-0.5 
-                                      group-hover:-translate-y-0.5" />
-                </motion.div>
-              )}
-            </div>
-          </div>
+      {/* Imagem no topo */}
+      {imageUrl && (
+        <div className="w-full h-80 overflow-hidden">
+          <img
+            src={imageUrl}
+            alt={title}
+            className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+          />
         </div>
-      </div>
+      )}
 
-      {/* Style definition for shadow text */}
-      <style jsx>{`
-        .shadow-text {
-          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-      `}</style>
+      {/* Conteúdo abaixo da imagem */}
+      <div className="p-6 flex flex-col gap-3">
+        {featured && (
+          <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full 
+                        bg-white/90 text-[#f52545] text-sm font-bold backdrop-blur-sm
+                        shadow-lg transform -rotate-2 border border-[#f52545]/20">
+            Destaque
+          </div>
+          
+        )}
+
+        {/* Ícone e Título */}
+        <div className="flex items-center gap-3">
+          {Icon && (
+            <div className="p-2.5 rounded-xl bg-red-500 backdrop-blur-sm shadow-lg">
+              <Icon className="w-5 h-5 text-white" />
+            </div>
+          )}
+          <h3 className="text-2xl font-bold text-gray-100">{title}</h3>
+          
+        </div>
+        <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-red-500/20 filter blur-2xl"></div>
+        <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-blue-500/20 filter blur-2xl"></div>
+        {/* Descrição */}
+        <p className="text-gray-100 text-base">{description}</p>
+
+        {/* Botão Saiba Mais */}
+        {url && (
+          <motion.div
+            className="flex items-center text-red-600 font-medium gap-2 
+                      bg-gray-100 px-4 py-2 rounded-full w-fit
+                      hover:bg-red-200 transition-colors border  mt-4"
+            whileHover={{ x: 5 }}
+          >
+            <span>Visite </span>
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </motion.div>
+        )}
+      </div>
     </motion.div>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Code, Target, Globe, Linkedin, Twitter } from "lucide-react";
+import { Code } from "lucide-react";
 
 interface ProfileSectionProps {
   name?: string;
@@ -36,101 +36,46 @@ const ProfileSection = ({
   name = "Thomas Eduardo",
   title = "Desenvolvedor Web Full Stack",
   bio = "Criador de interfaces eficientes e intuitivas. Especialista em desenvolvimento web, focado em performance, usabilidade e inovação. Compartilho minha experiência para ajudar outros desenvolvedores a crescerem no setor.",
-  avatarUrl = "/perfil/thomas.png",
+  avatarUrl = "/perfil/logo.svg",
   backgroundColor = "bg-black",
   socialLinks = {
     linkedin: "https://linkedin.com/in/odevthomas",
     github: "https://github.com/odevthomas",
     twitter: "https://twitter.com/odevthomas"
   },
-  skills = ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "Docker"]
+  skills = ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "Banco de Dados", "Express",]
 }: ProfileSectionProps) => {
-  const { linkedin, github, twitter } = socialLinks || {};
-
   return (
     <section className={`w-full ${backgroundColor} py-20 px-4 flex justify-center items-center`}>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-5xl w-full bg-black rounded-3xl shadow-2xl overflow-hidden backdrop-blur-sm border border-white/10 z-10"
+        className="max-w-4xl w-full bg-black/50 rounded-3xl shadow-2xl p-8 md:p-12 backdrop-blur-md border border-white/10"
       >
-        <div className="grid md:grid-cols-[280px_1fr] gap-10 p-8 md:p-12">
-          {/* Coluna de Perfil */}
-          <div className="flex flex-col items-center">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              className="mb-8 w-32 h-32 rounded-full overflow-hidden border border-gray-100/30 shadow-lg shadow-gray-100/20"
-            >
-              <img
-                src={avatarUrl}
-                alt={name}
-                className="w-full h-full object-cover object-center"
-              />
-            </motion.div>
+        
+       <div className="md:flex md:items-center md:gap-10">
 
-           
-          </div>
+          {/* Conteúdo */}
+          <div className="text-white mt-6 md:mt-0">
+            <h1 className="text-3xl font-bold">{name}</h1>
+            <p className="text-red-500 text-xl font-medium mt-1">{title}</p>
+            <p className="mt-4 text-zinc-300 leading-relaxed">{bio}</p>
 
-          {/* Coluna de Conteúdo */}
-          <div className="flex flex-col justify-center">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">{name}</h1>
-              <h2 className="text-xl text-red-500 font-medium mb-6 flex items-center">
-                <span className="mr-2 h-1 w-6 bg-red-500 rounded-full"></span>
-                {title}
-              </h2>
-              <p className="text-zinc-300 mb-8 leading-relaxed text-lg">{bio}</p>
-
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                  <Code className="mr-2 text-red-500" size={20} />
-                  Principais Habilidades
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map((skill, index) => (
-                    <motion.span
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.1, type: "spring", stiffness: 300 }}
-                      className="bg-zinc-800 text-zinc-200 px-4 py-2 rounded-xl text-sm font-medium border border-zinc-700 hover:border-red-500/50 transition-colors"
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
+            {/* Habilidades */}
+            <div className="mt-6">
+              <h3 className="text-lg font-semibold flex items-center">
+                <Code className="text-red-500 mr-2" size={20} />
+                Habilidades
+              </h3>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {skills.map((skill, i) => (
+                  <span key={i} className="bg-zinc-800 text-white px-4 py-2 rounded-lg text-sm">
+                    {skill}
+                  </span>
+                ))}
               </div>
-
-              {/* Botões de Ação - Redesenhados 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.a
-                  href="#contato"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-gradient-to-r from-red-600 to-red-500 text-white px-8 py-4 rounded-xl font-medium flex items-center justify-center shadow-lg shadow-red-500/20 hover:shadow-red-500/30 transition-all duration-300"
-                >
-                  <Target className="mr-2" size={20} />
-                  Entre em Contato
-                </motion.a>
-
-                <motion.a
-                  href="#portfolio"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-zinc-800 hover:bg-zinc-700 text-white px-8 py-4 rounded-xl font-medium flex items-center justify-center border border-zinc-700 hover:border-zinc-600 transition-all duration-300"
-                >
-                  <Globe className="mr-2" size={20} />
-                  Ver Portfólio
-                </motion.a>
-              </div>
-              */}
-            </motion.div>
+            </div>
           </div>
         </div>
       </motion.div>
