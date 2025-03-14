@@ -45,7 +45,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           <img
             src={imageUrl}
             alt={title}
-            className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-60 object-cover transition-transform duration-500 "
           />
         </div>
       )}
@@ -85,7 +85,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             whileHover={{ x: 5 }}
           >
             <span>Visite </span>
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 " />
           </motion.div>
         )}
       </div>

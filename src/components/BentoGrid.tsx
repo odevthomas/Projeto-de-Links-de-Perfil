@@ -50,19 +50,7 @@ const defaultItems: BentoGridItem[] = [
     gridSpan: "medium",
     category: "Serviços",
 },
-{
-    id: "4",
-    type: "service",
-    title: "AfiliShop",
-    description: "Projeto em andamento para criação de uma plataforma de afiliados.",
-    icon: StoreIcon,
-    imageUrl:
-      "https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=400&auto=format&fit=crop&sat=-100",
-    url: "#afili-shop",
-    bgColor: "bg-black",
-    gridSpan: "medium",
-    category: "Serviços",
-},
+
 
 // Links Sociais
 {
@@ -137,17 +125,7 @@ const defaultItems: BentoGridItem[] = [
     category: "Contato",
   },
 
-  // Links de Mídia Social e Outros
-  {
-    id: "6",
-    type: "iframe",
-    title: "Spotify",
-    description: "Ouça minhas playlists e músicas favoritas.",
-    icon: Music,
-    url: "https://open.spotify.com/embed/track/5pKCDm2fw4k6D6C5Rk646C?utm_source=generator&theme=0",
-    bgColor: "bg-black",
-    category: "Social",
-  },
+  
 ];
 
 const BentoGrid = ({
