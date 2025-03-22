@@ -1,6 +1,3 @@
-
-![Home (1)](https://github.com/user-attachments/assets/b1e8f070-b80b-49b6-bdc0-180177f705d6)
-
 # Projeto de Links de Perfil (React, TypeScript, Vite)
 
 Este projeto foi criado utilizando **React**, **TypeScript** e **Vite**. Ele exibe uma seção de perfil com informações pessoais, links sociais e habilidades, incluindo animações interativas usando a biblioteca **Framer Motion** e ícones da biblioteca **Lucide React**.
@@ -110,5 +107,3 @@ Se você deseja contribuir para este projeto, fique à vontade para abrir um **P
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
-```
-
